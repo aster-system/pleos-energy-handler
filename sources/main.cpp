@@ -35,7 +35,12 @@ SCLS_MATH_INIT
 int main() {
     pleos::physic::Physic_Engine engine;
 
-    scls::print("Matt", engine.atoms_datas()[0][1].get()->mass());
-    scls::print("Matt", engine.atoms_datas()[0][1].get()->atomic_mass());
+    for(int i = 0;i<static_cast<int>(engine.atoms_datas().size());i++) {
+        for(int j = 0;j<static_cast<int>(engine.atoms_datas()[i].size());j++) {
+            scls::print("Information", engine.atoms_datas()[i][j].get()->name(), engine.atoms_datas()[i][j].get()->mass());
+            scls::print("Information", engine.atoms_datas()[i][j].get()->name(), engine.atoms_datas()[i][j].get()->mass_by_mole(50));
+            scls::print("Information", engine.atoms_datas()[i][j].get()->name(), engine.atoms_datas()[i][j].get()->mole_by_mass(50));
+        }
+    }
     return 0;
 }

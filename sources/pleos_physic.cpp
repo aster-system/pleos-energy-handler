@@ -50,5 +50,98 @@ namespace pleos { namespace physic {
         current_atom.push_back(current_isotope);
         a_atoms_datas.push_back(current_atom);
         current_atom.clear();
+
+        // Helium atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Hélium"), "He", 2, 2);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Lithium atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Lithium"), "Li", 3, 3);
+        current_atom.push_back(current_isotope);
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Lithium"), "Li", 3, 4);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Beryllium atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Béryllium"), "Be", 4, 5);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Bore atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Bore"), "B", 5, 5);
+        current_atom.push_back(current_isotope);
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Bore"), "B", 5, 6);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Carbon atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Carbone"), "C", 6, 6);
+        current_atom.push_back(current_isotope);
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Carbone"), "C", 6, 7);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Nitrogen atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Azote"), "N", 7, 7);
+        current_atom.push_back(current_isotope);
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Azote"), "N", 7, 8);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Oxygen atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Oxygène"), "O", 8, 8);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Sulfur atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Soufre"), "S", 16, 16);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Iron atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Fer"), "Fe", 26, 30);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+
+        // Oganesson atom
+        current_isotope = std::make_shared<Atom_Datas>(scls::to_utf_8_code_point("Oganesson"), "Og", 118, 176);
+        current_atom.push_back(current_isotope);
+        a_atoms_datas.push_back(current_atom);
+        current_atom.clear();
+    }
+
+    // Load the needed molecules datas
+    void Physic_Engine::load_molecules_datas() {
+        a_molecules_datas.clear();
+        std::shared_ptr<Molecule_Datas> current_molecule;
+
+        // CO2 atom
+        current_molecule = std::make_shared<Molecule_Datas>(scls::to_utf_8_code_point("Dioxyde de carbon"));
+        current_molecule.get()->add_atom(a_atoms_datas[7][0], 2);
+        current_molecule.get()->add_atom(a_atoms_datas[5][1], 1);
+        a_molecules_datas.push_back(current_molecule);
+
+        // C4H10 atom
+        current_molecule = std::make_shared<Molecule_Datas>(scls::to_utf_8_code_point("Butane"));
+        current_molecule.get()->add_atom(a_atoms_datas[0][0], 10);
+        current_molecule.get()->add_atom(a_atoms_datas[5][1], 4);
+        std::cout << current_molecule.get()->mass() << " " << current_molecule.get()->mole_by_mass() << std::endl;
+        a_molecules_datas.push_back(current_molecule);
+
+        // C12H26 atom
+        current_molecule = std::make_shared<Molecule_Datas>(scls::to_utf_8_code_point("Dodécane"));
+        current_molecule.get()->add_atom(a_atoms_datas[0][0], 26);
+        current_molecule.get()->add_atom(a_atoms_datas[5][1], 12);
+        a_molecules_datas.push_back(current_molecule);
     }
 }}
